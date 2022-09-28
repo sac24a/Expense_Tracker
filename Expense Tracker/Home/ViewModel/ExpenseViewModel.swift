@@ -12,6 +12,7 @@ import UIKit
 class ExpenseViewModel {
     // MARK: Array of type managed objects
     var model : [NSManagedObject]?
+    var monthModel : [NSManagedObject]?
     
     // TODO: confirm this delegate from adapting view controller
     var delegate :ExpenseAddDelegate?
@@ -23,9 +24,11 @@ class ExpenseViewModel {
     }
     
     //MARK: method to fetch expense based on date
-    func getExpenseBydate(date:String) {
+    func getExpenseBydate(date:String, month:String) {
         let objects = CoredataHelper.instance.getExpenseByDate(date: date)
         model = objects
+        let monthData = CoredataHelper.instance.getExpenseByMonth(month: month)
+        monthModel = monthData
     }
     
     //MARK: method to save the expense in core data
@@ -50,8 +53,9 @@ class ExpenseViewModel {
     }
     
     //MARK: method to delete selected object
-    func deleteExpense(obj:NSManagedObject) {
-        CoredataHelper.instance.deleteData(obj: obj)
+    func deleteExpense(obj:NSManagedObject)-> Bool {
+        let status = CoredataHelper.instance.deleteData(obj: obj)
+        return status
     }
     
 }

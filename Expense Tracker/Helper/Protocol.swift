@@ -13,5 +13,5 @@ protocol ExpenseAddDelegate{
     func onExpenseAdd(status:Bool)
 }
 protocol ActionSheetDatePickerDelegate {
-    func onDoneClicked(date:String)
+    func onDoneClicked(date:String,month:String)
 }

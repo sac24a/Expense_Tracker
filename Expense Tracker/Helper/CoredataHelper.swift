@@ -65,6 +65,21 @@ struct CoredataHelper {
         return people
     }
     
+    //MARK: Retrieve data by month
+    func getExpenseByMonth(month:String) -> [NSManagedObject] {
+        var people: [NSManagedObject] = []
+        let context = CoredataHelper.instance.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Expense")
+        fetchRequest.predicate = NSPredicate(format: "date contains %@", month)
+        do {
+            people = try context.fetch(fetchRequest)
+          } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+          }
+        return people
+    }
+    
     //MARK: delete selected data 
     func deleteData(obj:NSManagedObject)->Bool {
         let context = CoredataHelper.instance.persistentContainer.viewContext
@@ -72,9 +87,9 @@ struct CoredataHelper {
 
         do {
             try context.save() // <- remember to put this :)
+            return true
         } catch {
-            // Do something... fatalerror
+            return false            
         }
-        return false
     }
 }

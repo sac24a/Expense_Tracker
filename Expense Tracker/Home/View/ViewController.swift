@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var dateHelper = DatePickerHelper()
     
     @IBOutlet weak var totalExpense: UILabel!
+    @IBOutlet weak var monthlyExpense: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         // MARK:  calling function to get saved expense today
-        viewModel.getExpenseBydate(date: Date().currentDate)
+        viewModel.getExpenseBydate(date: Date().currentDate, month: Date().currentMonth)
         
         guard let _ = viewModel.model?.count else {return}
         tblView.reloadData()
@@ -42,11 +43,12 @@ class ViewController: UIViewController {
         calculateTotalExpense()
     }
     
-    // MARK:  Calender button click action
+    // MARK:  Calender button click action, expense by date
     @IBAction func getExpenseByDate(_ sender: Any) {
         
         // MARK:  calling action sheet date picker
         dateHelper.ShowDatePicker(vc: self)
+        
     }
     
     // MARK:  calculating the sum of dispayed expense
@@ -63,6 +65,16 @@ class ViewController: UIViewController {
             totalExpense.text = "₹\(0.00)"
             // MARK:  Global function to show alert with no action
             ShowDeadAlertwithMessage(vc: self, message: "No expense to show, Please add expense")
+        }
+        if viewModel.monthModel?.count != nil && viewModel.monthModel?.count != 0 {
+            var sum = 0.00
+            for value in viewModel.monthModel! {
+                sum += value.value(forKey: "price") as! Double
+            }
+            monthlyExpense.text = "₹\(sum)"
+        }
+        else {
+            monthlyExpense.text = "₹\(0.00)"
         }
     }
     
@@ -103,21 +115,34 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // deleting the record from the core data
-            viewModel.deleteExpense(obj: (viewModel.model?[indexPath.row])!)
-            // deleting the record from the model
-            viewModel.model?.remove(at: indexPath.row)
-            tableView.reloadData()
-            calculateTotalExpense()
+            let status = viewModel.deleteExpense(obj: (viewModel.model?[indexPath.row])!)
+            if status {
+                // deleting the record from the model
+                let pos = viewModel.monthModel?.firstIndex(of: (viewModel.model?[indexPath.row])!)
+                viewModel.monthModel?.remove(at: pos!)
+                viewModel.model?.remove(at: indexPath.row)                
+                tableView.reloadData()
+                calculateTotalExpense()
+            }
+            else {
+                ShowDeadAlertwithMessage(vc: self, message: "Unable to delete")
+            }
+            
+            
         }
     }
 }
 // MARK: Protocol method
 extension ViewController: ActionSheetDatePickerDelegate {
-    // MARK: Get date on done button
-    func onDoneClicked(date: String) {
-        viewModel.getExpenseBydate(date: date)
+    func onDoneClicked(date: String, month: String) {
+        viewModel.getExpenseBydate(date: date, month: month)
         tblView.reloadData()
         calculateTotalExpense()
+    }
+    
+    // MARK: Get date on done button
+    func onDoneClicked(date: String) {
+        
     }
 }
 

@@ -115,14 +115,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADf-AM-p8t">
                                 <rect key="frame" x="0.0" y="826" width="414" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your total expense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdi-EE-qm7">
-                                        <rect key="frame" x="136.5" y="25" width="141" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Expense:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdi-EE-qm7">
+                                        <rect key="frame" x="230" y="25" width="111" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6d-0m-sxt">
-                                        <rect key="frame" x="287.5" y="25" width="53" height="20.5"/>
+                                        <rect key="frame" x="346" y="25" width="53" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.61568627450000002" green="0.043137254899999998" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Expense:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6P-sS-Sps">
+                                        <rect key="frame" x="15" y="25" width="135.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₹ 1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XK-B4-hbg">
+                                        <rect key="frame" x="155.5" y="25" width="53" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.61568627450000002" green="0.043137254899999998" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -130,10 +142,14 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Cdi-EE-qm7" firstAttribute="centerX" secondItem="ADf-AM-p8t" secondAttribute="centerX" id="3It-g2-Oa6"/>
+                                    <constraint firstAttribute="trailing" secondItem="c6d-0m-sxt" secondAttribute="trailing" constant="15" id="0B2-7A-T4a"/>
+                                    <constraint firstItem="5XK-B4-hbg" firstAttribute="centerY" secondItem="ADf-AM-p8t" secondAttribute="centerY" id="9Vm-ab-uZ8"/>
                                     <constraint firstAttribute="height" constant="70" id="Ffl-hx-HbN"/>
-                                    <constraint firstItem="c6d-0m-sxt" firstAttribute="leading" secondItem="Cdi-EE-qm7" secondAttribute="trailing" constant="10" id="bwt-aw-i2S"/>
+                                    <constraint firstItem="d6P-sS-Sps" firstAttribute="centerY" secondItem="ADf-AM-p8t" secondAttribute="centerY" id="HlR-BP-cuD"/>
+                                    <constraint firstItem="d6P-sS-Sps" firstAttribute="leading" secondItem="ADf-AM-p8t" secondAttribute="leading" constant="15" id="PSm-3f-0gC"/>
+                                    <constraint firstItem="c6d-0m-sxt" firstAttribute="leading" secondItem="Cdi-EE-qm7" secondAttribute="trailing" constant="5" id="bwt-aw-i2S"/>
                                     <constraint firstItem="Cdi-EE-qm7" firstAttribute="centerY" secondItem="ADf-AM-p8t" secondAttribute="centerY" id="kaV-Ei-okU"/>
+                                    <constraint firstItem="5XK-B4-hbg" firstAttribute="leading" secondItem="d6P-sS-Sps" secondAttribute="trailing" constant="5" id="qev-x8-wlp"/>
                                     <constraint firstItem="c6d-0m-sxt" firstAttribute="centerY" secondItem="ADf-AM-p8t" secondAttribute="centerY" id="zg1-Rn-pdh"/>
                                 </constraints>
                             </view>
@@ -155,6 +171,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="slB-QZ-FS1"/>
                     <connections>
+                        <outlet property="monthlyExpense" destination="5XK-B4-hbg" id="YYd-Fr-csL"/>
                         <outlet property="tblView" destination="crj-Dv-59G" id="Drd-LN-0A6"/>
                         <outlet property="totalExpense" destination="c6d-0m-sxt" id="qgE-6G-CPE"/>
                     </connections>

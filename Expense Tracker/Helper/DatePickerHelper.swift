@@ -27,8 +27,13 @@ class DatePickerHelper {
             formatter.dateFormat = "dd MMM yyyy" //"MM/dd/yyyy"
             let date = formatter.string(from: self.datePicker.date)
             
+            //MARK: get month
+            let newForm = DateFormatter()
+            newForm.dateFormat = "MMM"
+            let month = newForm.string(from: self.datePicker.date)
+            
             //MARK: delegate on view controller
-            self.delegate?.onDoneClicked(date: date)
+            self.delegate?.onDoneClicked(date: date, month: month)
         }
         alert.addAction(action)
         alert.view.addSubview(datePicker)

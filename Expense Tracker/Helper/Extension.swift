@@ -21,7 +21,13 @@ extension Date {
     //MARK: returning current date
     var currentDate : String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy" //"MM/dd/yyyy"
+        formatter.dateFormat = "dd MMM yyyy" //"date format"
+        let date = formatter.string(from: Date())
+        return date
+    }
+    var currentMonth : String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM" //"month"
         let date = formatter.string(from: Date())
         return date
     }
