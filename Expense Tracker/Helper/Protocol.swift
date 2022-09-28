@@ -15,3 +15,9 @@ protocol ExpenseAddDelegate{
 protocol ActionSheetDatePickerDelegate {
     func onDoneClicked(date:String,month:String)
 }
+protocol CategoryDelegate {
+    func onCategoryAdd(status:Bool)
+}
+protocol CategoryAlertDelegate {
+    func getCategoryName(category:String)
+}

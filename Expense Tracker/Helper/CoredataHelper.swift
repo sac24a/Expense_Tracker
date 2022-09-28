@@ -36,12 +36,26 @@ struct CoredataHelper {
             }
         }
     }
-    //MARK: Retrieve all data
+    //MARK: Retrieve all Expense data
     func getvalue() -> [NSManagedObject] {
         var people: [NSManagedObject] = []
         let context = CoredataHelper.instance.persistentContainer.viewContext
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "Expense")
+        do {
+            people = try context.fetch(fetchRequest)
+          } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+          }
+        return people
+    }
+    //MARK: Retrieve all Category data
+    func getCategory() -> [NSManagedObject] {
+        var people: [NSManagedObject] = []
+        let context = CoredataHelper.instance.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Category")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         do {
             people = try context.fetch(fetchRequest)
           } catch let error as NSError {
@@ -92,4 +106,17 @@ struct CoredataHelper {
             return false            
         }
     }
+    //MARK: delete Category data
+    func deleteCategory(obj:NSManagedObject)->Bool {
+        let context = CoredataHelper.instance.persistentContainer.viewContext
+        context.delete(obj)
+
+        do {
+            try context.save() // <- remember to put this :)
+            return true
+        } catch {
+            return false
+        }
+    }
+    
 }

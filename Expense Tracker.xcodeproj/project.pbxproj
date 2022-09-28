@@ -32,6 +32,9 @@
 		2347017228D3024000DAAFA4 /* Expense_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347017128D3024000DAAFA4 /* Expense_TrackerUITestsLaunchTests.swift */; };
 		2347018028D3030700DAAFA4 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2347017E28D3030700DAAFA4 /* ExpenseCell.swift */; };
 		2347018128D3030700DAAFA4 /* ExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2347017F28D3030700DAAFA4 /* ExpenseCell.xib */; };
+		23AEF24828E44893002C2773 /* AddCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AEF24728E44893002C2773 /* AddCategoryVC.swift */; };
+		23AEF24A28E448DA002C2773 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AEF24928E448DA002C2773 /* CategoryViewModel.swift */; };
+		23AEF24C28E4689E002C2773 /* PickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AEF24B28E4689E002C2773 /* PickerHelper.swift */; };
 		DAA53E8F1B53A7FF7659DCFD /* Pods_Expense_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19643B7595CE9F2811B6CAB /* Pods_Expense_Tracker.framework */; };
 		FEE2B52118BEE8A4F3755B26 /* Pods_Expense_TrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DC8B21C4A61BF57C3E326B /* Pods_Expense_TrackerTests.framework */; };
 /* End PBXBuildFile section */
@@ -85,6 +88,9 @@
 		2347017128D3024000DAAFA4 /* Expense_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2347017E28D3030700DAAFA4 /* ExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
 		2347017F28D3030700DAAFA4 /* ExpenseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseCell.xib; sourceTree = "<group>"; };
+		23AEF24728E44893002C2773 /* AddCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryVC.swift; sourceTree = "<group>"; };
+		23AEF24928E448DA002C2773 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		23AEF24B28E4689E002C2773 /* PickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerHelper.swift; sourceTree = "<group>"; };
 		2DA1710A2DDCC081E5D6D9DF /* Pods-Expense Tracker-Expense TrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker-Expense TrackerUITests.debug.xcconfig"; path = "Target Support Files/Pods-Expense Tracker-Expense TrackerUITests/Pods-Expense Tracker-Expense TrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4D5B95B058828DDC102AD530 /* Pods-Expense Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Expense Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Expense Tracker/Pods-Expense Tracker.debug.xcconfig"; sourceTree = "<group>"; };
 		8E8D448AC317A7CD993EDB83 /* Pods_Expense_Tracker_Expense_TrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Expense_Tracker_Expense_TrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +172,7 @@
 				233A497B28E1BB8900A68775 /* AlertManager.swift */,
 				233A497D28E1C64100A68775 /* Extension.swift */,
 				233A498128E2C4A300A68775 /* DatePickerHelper.swift */,
+				23AEF24B28E4689E002C2773 /* PickerHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 		2347014A28D3023D00DAAFA4 /* Expense Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				23AEF24628E44865002C2773 /* AddCategory */,
 				233A497228E1856800A68775 /* AddExpense */,
 				233A496C28E0D31C00A68775 /* Helper */,
 				233A496728E0D27600A68775 /* Home */,
@@ -245,6 +253,15 @@
 				2347017128D3024000DAAFA4 /* Expense_TrackerUITestsLaunchTests.swift */,
 			);
 			path = "Expense TrackerUITests";
+			sourceTree = "<group>";
+		};
+		23AEF24628E44865002C2773 /* AddCategory */ = {
+			isa = PBXGroup;
+			children = (
+				23AEF24728E44893002C2773 /* AddCategoryVC.swift */,
+				23AEF24928E448DA002C2773 /* CategoryViewModel.swift */,
+			);
+			path = AddCategory;
 			sourceTree = "<group>";
 		};
 		D717FAC3396EC41F590A2128 /* Pods */ = {
@@ -468,6 +485,8 @@
 				233A497428E1858C00A68775 /* AddExpenseModel.swift in Sources */,
 				233A497628E1859700A68775 /* AddExpenseViewModel.swift in Sources */,
 				233A496628E0D23000A68775 /* ExpenseModel.swift in Sources */,
+				23AEF24C28E4689E002C2773 /* PickerHelper.swift in Sources */,
+				23AEF24828E44893002C2773 /* AddCategoryVC.swift in Sources */,
 				233A497828E185B900A68775 /* AddExpenseVC.swift in Sources */,
 				2347015028D3023D00DAAFA4 /* ViewController.swift in Sources */,
 				233A496E28E0D33A00A68775 /* CoredataHelper.swift in Sources */,
@@ -479,6 +498,7 @@
 				2347014E28D3023D00DAAFA4 /* SceneDelegate.swift in Sources */,
 				233A498228E2C4A300A68775 /* DatePickerHelper.swift in Sources */,
 				233A497C28E1BB8900A68775 /* AlertManager.swift in Sources */,
+				23AEF24A28E448DA002C2773 /* CategoryViewModel.swift in Sources */,
 				2347015628D3023D00DAAFA4 /* Expense_Tracker.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,6 +687,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -697,6 +718,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

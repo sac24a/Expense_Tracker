@@ -80,6 +80,10 @@ class ViewController: UIViewController {
     
     // MARK:  Home button click action
     @IBAction func homeBtnClicked(_ sender: Any) {
+        // MARK:  Navigating to Add Category view controller
+        let story = UIStoryboard(name: "Main", bundle: .main)
+        let vc = story.instantiateViewController(withIdentifier: "AddCategoryVC") as! AddCategoryVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK:  Add expense click action

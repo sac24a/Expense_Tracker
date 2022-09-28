@@ -7,12 +7,15 @@
 
 import UIKit
 
-class AddExpenseVC: UIViewController {
+class AddExpenseVC: UIViewController{
+    
     // MARK: Text field outlets
     @IBOutlet weak var expenseName: UITextField!
     @IBOutlet weak var expenseAmount: UITextField!
     @IBOutlet weak var expenseDate: UITextField!
     var viewModel = ExpenseViewModel()
+    var catViewModel = CategoryViewModel()
+    var category : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // MARK: Confirming text field delegate
@@ -20,6 +23,7 @@ class AddExpenseVC: UIViewController {
         expenseName.delegate = self
         expenseAmount.delegate = self
         viewModel.delegate = self
+        catViewModel.getCategory()
     }
 
     @IBAction func addBtn(_ sender: Any) {
@@ -64,6 +68,17 @@ extension AddExpenseVC : UITextFieldDelegate,DatePickerViewDelegate {
             let datePicker   = DatePickerView.init(textField: textField, lbldate: expenseDate.text ?? "")
             datePicker.delegate = self
         }
+        else if textField == expenseName {
+            if category {
+                textField.becomeFirstResponder()
+            }
+            else {
+                if catViewModel.model!.count > 0 {
+                    let picker = PickerHelper(arrObj: catViewModel.model!, textField: textField)
+                    picker.delegatePicker = self
+                }
+            }
+        }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -81,5 +96,19 @@ extension AddExpenseVC : ExpenseAddDelegate {
         else {
             ShowDeadAlertwithMessage(vc: self, message: "Expense not saved!")
         }
+    }
+}
+extension AddExpenseVC : PickerViewDelegate {
+    func cancelBtnTapped(textField: UITextField) {
+        category = true
+        textField.inputView = nil
+        textField.reloadInputViews()
+        textField.inputAccessoryView = nil
+        textField.becomeFirstResponder()
+        
+    }
+    
+    func doneBtnTapped(title: String?, textField: UITextField) {
+        expenseName.text = title
     }
 }

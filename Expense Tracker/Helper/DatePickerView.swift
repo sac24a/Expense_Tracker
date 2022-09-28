@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 //MARK: Custom date picker for AddExpenseVC
-protocol DatePickerViewDelegate:class{
+protocol DatePickerViewDelegate:AnyObject{
     func cancelDateBtnTapped(textField:UITextField)
     func doneBtnTapped(date:String,textField:UITextField)
 }
@@ -26,15 +26,6 @@ open class DatePickerView	: UIDatePicker {
         } else {
             // Fallback on earlier versions
         }
-       
-//        var birthdayDate18Year :Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
-//        var birthdayDate :Date = Calendar.current.date(byAdding: .year, value: -18, to: Date())!
-//        if lbldate != ""{
-//            let dateFormater = DateFormatter()
-//            dateFormater.dateFormat = "dd MMM yyyy"
-//            birthdayDate = dateFormater.date(from: lbldate)!
-//        }
-//        self.date = birthdayDate
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
